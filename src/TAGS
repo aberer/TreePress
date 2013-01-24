@@ -1,0 +1,218 @@
+
+Tree.cpp,125
+Tree::Tree(int numTax)Tree3,21
+Tree::~Tree()~Tree10,143
+ostream& operator<<(ostream &out, Tree &tree)operator <<16,188
+
+Tree.hpp,351
+class TreeTree4,47
+  TreeElem* getNextElem(){return &(allocatedElems[elemsUsed++]); } getNextElem9,102
+  TreeElem* getStart(){return start;} getStart10,170
+  void setStart(TreeElem *_start){start = _start; }setStart11,209
+  TreeElem *allocatedElems; allocatedElems14,272
+  int elemsUsed;   elemsUsed15,301
+  TreeElem* start; start16,321
+
+TreeElem.cpp,67
+ostream& operator<<(ostream& out, TreeElem &elem)operator <<6,50
+
+TreeElem.hpp,193
+class TreeElemTreeElem4,3
+  bool isTip(){return down[0] == nullptr && down[1] == nullptr; }isTip7,31
+  TreeElem *down[2]; down8,97
+  TreeElem *up;up9,119
+  char *label;   label10,135
+
+TreeReader.cpp,315
+int getNumTreeHelper(const char *fileName)getNumTreeHelper11,168
+TreeReader::TreeReader( char *fileName)TreeReader25,345
+TreeReader::~TreeReader()~TreeReader39,576
+TreeElem* TreeReader::traverseLegacy(All *tr,node* p , Tree &tree )traverseLegacy50,694
+void TreeReader::readTree(Tree &tree)readTree85,1501
+
+TreeReader.hpp,366
+class TreeReaderTreeReader8,86
+  bool hasMoreTrees(){return treesRead < numTrees; }hasMoreTrees14,193
+  int getNumTax(){return numTax; }getNumTax15,246
+  int numTrees; numTrees20,353
+  int treesRead; treesRead21,370
+  int numTax; 			// NOTICE all our trees need to have the same number of taxa  numTax22,388
+  FILE *fh; fh23,468
+  All *tr ; tr24,481
+
+global.cpp,102
+void errorExit(int e)errorExit5,25
+FILE *myfopen(const char *path, const char *mode)myfopen13,120
+
+global.hpp,0
+
+main.cpp,43
+int main(int argc, char* argv[])main7,52
+
+old/OldTree.cpp,238
+Tree::Tree(int _numTax)Tree4,22
+Tree::~Tree()~Tree15,205
+ostream& operator<<(ostream &out, Tree &tree)operator <<22,248
+void Tree::traverseAndPrint()traverseAndPrint32,437
+void Tree::traverseInner(Node *node)traverseInner40,521
+
+old/Node.cpp,65
+ostream& operator<< (ostream &out, Node &node )operator <<4,22
+
+old/Node.hpp,244
+class Node Node5,38
+  Node* getBack(){return back;}getBack8,62
+  Node* getNext(){return next;}  getNext9,94
+  Node* next; next12,130
+  Node* back; back13,145
+  int id; id14,160
+  char *name; name15,171
+  bool isTip; isTip16,186
+
+old/OldTree.hpp,533
+class  TreeTree11,100
+  Node* getTipByNum(int num){assert(num < numTax); return nodes + num; }getTipByNum16,156
+  Node* getNode(int num){return nodes + num;} getNode17,229
+  Node* getNodes(){return nodes; }getNodes18,276
+  int getNumNodes(){return 2 * numTax -3 ; }  getNumNodes19,311
+  void setStart(Node *_start) {start = _start; }setStart20,358
+  Node* getStart() {return start; }getStart21,407
+  Node *nodes; nodes25,516
+  int numTax; numTax26,532
+  int numNodes; numNodes27,547
+  Node *start;  start28,564
+
+raxmlLegacy.cpp,3068
+#define printBothOpen printBothOpen13,409
+static unsigned int KISS32(void)KISS3215,439
+stringHashtable *initStringHashTable(unsigned int n)initStringHashTable39,759
+static unsigned int  hashString(char *p, unsigned int tableSize)hashString70,1519
+void addword(char *s, stringHashtable *h, int nodeNumber)addword81,1682
+int getNumberOfTaxa(All *tr, char *bootStrapFile)getNumberOfTaxa108,2199
+boolean setupTree (All *tr, char *bootstrapFile)setupTree187,3951
+nodeptr findAnyTip(nodeptr p, int numsp)findAnyTip293,5928
+void hookupAdd(nodeptr p, nodeptr q, int numBranches)hookupAdd299,6053
+void hookup (nodeptr p, nodeptr q, double *z, int numBranches)hookup314,6260
+void hookupDefault (nodeptr p, nodeptr q, int numBranches)hookupDefault328,6437
+static boolean treeLabelEnd (int ch)treeLabelEnd340,6612
+static boolean  treeGetLabel (FILE *fp, char *lblPtr, int maxlen)treeGetLabel362,6919
+static boolean  treeFlushLabel (FILE *fp)treeFlushLabel410,7717
+int lookupWord(char *s, stringHashtable *h)lookupWord415,7818
+int treeFindTipByLabelString(char  *str, All *tr)treeFindTipByLabelString430,8086
+int treeFindTipName(FILE *fp, All *tr)treeFindTipName447,8383
+static boolean treeProcessLength (FILE *fp, double *dptr)treeProcessLength462,8587
+static int treeFlushLen (FILE  *fp)treeFlushLen480,8975
+boolean isTip(int number, int maxTips)isTip503,9298
+static char *Tree2StringREC(char *treestr, All *tr, nodeptr p, boolean printBranchLengths, boolean printNames, boolean printLikelihood, boolean rellTree, boolean finalPrint, int perGene, boolean branchLabelSupport, boolean printSHSupport)Tree2StringREC514,9432
+static double getBranchLength(All *tr, int perGene, nodeptr p)getBranchLength594,11934
+static nodeptr uprootTree (All *tr, nodeptr p, boolean readBranchLengths, boolean readConstraint)uprootTree612,12235
+char *Tree2String(char *treestr, All *tr, nodeptr p, Tree2String701,14639
+boolean whitechar (int ch)whitechar716,15109
+static void  treeEchoContext (FILE *fp1, FILE *fp2, int n)treeEchoContext722,15206
+int treeFinishCom (FILE *fp, char **strp)treeFinishCom743,15580
+static int treeGetCh (FILE *fp) treeGetCh760,16045
+static boolean treeNeedCh (FILE *fp, int c1, char *where)treeNeedCh776,16339
+static boolean addElementLen (FILE *fp, All *tr, nodeptr p, boolean readBranchLengths, boolean readNodeLabels, int *lcount)addElementLen801,16821
+int getTreeStringLength(char *fileName)getTreeStringLength883,19099
+int treeReadLen (FILE *fp, All *tr, boolean readBranches, boolean readNodeLabels, boolean topologyOnly, boolean completeTree) treeReadLen899,19279
+void getxnode (nodeptr p)getxnode1025,22368
+entry *initEntry(void)initEntry1039,22523
+FILE *getNumberOfTrees(All *tr, char *fileName)getNumberOfTrees1057,22868
+void readBestTree(All *tr, FILE *file)readBestTree1081,23172
+void readBootstrapTree(All *tr, FILE *file)readBootstrapTree1087,23268
+char *writeTreeToString(All *tr, boolean printBranchLengths)writeTreeToString1093,23369
+void freeTree(All *tr)freeTree1103,23614
+
+raxmlLegacy.hpp,3579
+typedef char boolean;boolean22,268
+#define NOT NOT25,306
+#define TRUE TRUE26,321
+#define FALSE FALSE27,348
+#define CALLOC(CALLOC28,375
+#define ABS(ABS29,419
+#define FOR_0_LIMIT(FOR_0_LIMIT30,465
+#define FOR_N_LIMIT(FOR_N_LIMIT31,532
+#define PR PR32,604
+#define SWAP(SWAP33,629
+#define USE_UPPER_TRIANGLE_LSI(USE_UPPER_TRIANGLE_LSI34,691
+#define USE_UPPER_TRIANGLE_TII(USE_UPPER_TRIANGLE_TII35,760
+#define MIN(MIN36,849
+#define MAX(MAX37,892
+#define GET_FROM_UPPER_TRIANGLE(GET_FROM_UPPER_TRIANGLE39,936
+#define NUM_BRANCHES NUM_BRANCHES42,1040
+#define MASK_LENGTH MASK_LENGTH43,1067
+typedef struct entent46,1092
+  unsigned int *bitVector;bitVector48,1113
+  unsigned int *treeVector;treeVector49,1140
+  unsigned int amountTips;amountTips50,1168
+  int *supportVector;supportVector51,1195
+  unsigned int bipNumber;bipNumber52,1217
+  unsigned int bipNumber2;bipNumber253,1243
+  unsigned int supportFromTreeset[2]; supportFromTreeset54,1270
+  struct ent *next;next55,1309
+} entry;entry56,1329
+  unsigned int *vector; vector60,1356
+  int support;   support61,1381
+  struct noderec *oP;oP62,1399
+  struct noderec *oQ;oQ63,1421
+} branchInfo;branchInfo64,1443
+typedef  struct noderecnoderec66,1458
+  unsigned int    isPresent[NUM_BRANCHES / MASK_LENGTH];isPresent68,1484
+  struct noderec  *backs[NUM_BRANCHES];backs69,1541
+  char            xs[NUM_BRANCHES];xs70,1581
+  branchInfo      *bInf;bInf71,1617
+  double           z[NUM_BRANCHES];z72,1642
+  struct noderec  *next;next73,1678
+  struct noderec  *back;back74,1703
+  unsigned int   hash;hash75,1728
+  int              support;support76,1751
+  int              number;number77,1779
+  char             x;x78,1806
+  double **insertionLWs;insertionLWs79,1828
+} node, *nodeptr;node80,1853
+} node, *nodeptr;nodeptr80,1853
+typedef struct stringEntstringEnt82,1872
+  int nodeNumber;nodeNumber84,1899
+  char *word;word85,1917
+  struct stringEnt *next;next86,1931
+} stringEntry ;stringEntry87,1957
+  unsigned int tableSize;tableSize91,1991
+  stringEntry **table;table92,2017
+}  stringHashtable;stringHashtable93,2040
+typedef struct _All_All96,2062
+  nodeptr start;start98,2084
+  int mxtips;mxtips99,2101
+  int numberOfTrees;numberOfTrees100,2115
+  int bitVectorLength;bitVectorLength101,2136
+  nodeptr *nodep;nodep102,2159
+  int ntips;ntips103,2177
+  int nextnode; nextnode104,2190
+  int numBranches;numBranches105,2207
+  boolean partitionSmoothed[NUM_BRANCHES];partitionSmoothed106,2226
+  boolean rooted;rooted107,2269
+  stringHashtable *nameHash;nameHash108,2287
+  boolean grouped;grouped109,2316
+  int *constraintVector;constraintVector110,2335
+  char **nameList;nameList111,2360
+  char *tree_string;tree_string112,2379
+  int treeStringLength;treeStringLength113,2400
+  double fracchange;fracchange114,2424
+} All;All115,2445
+  unsigned int tableSize;tableSize119,2470
+  entry **table;table120,2496
+  unsigned int entryCount;entryCount121,2513
+}  hashtable;hashtable122,2540
+#define FC_INIT FC_INIT125,2556
+#define zmin zmin126,2589
+#define NO_BRANCHES NO_BRANCHES127,2661
+#define BIPARTITIONS_ALL BIPARTITIONS_ALL129,2690
+#define GET_BIPARTITIONS_BEST GET_BIPARTITIONS_BEST130,2723
+#define DRAW_BIPARTITIONS_BEST DRAW_BIPARTITIONS_BEST131,2756
+#define BIPARTITIONS_BOOTSTOP BIPARTITIONS_BOOTSTOP132,2789
+#define BIPARTITIONS_RF BIPARTITIONS_RF133,2822
+#define defaultz defaultz134,2849
+#define nmlngth nmlngth135,2928
+#define VECTOR_LENGTH VECTOR_LENGTH136,3007
+
+version.hpp,29
+#define VERSION VERSION1,0
