@@ -53,10 +53,11 @@ TreeElem* TreeReader::traverseLegacy(All *tr,node* p , Tree &tree )
   if(p->number <= tr->mxtips)
     {
       char *tmp = tr->nameList[p->number]; 
-      char *tmp2 = (char*)calloc(strlen(tmp),sizeof(char));
-      strcpy(tmp2, tmp); 
-
-      elem->label = tmp2;       
+      // char *tmp2 = (char*)calloc(strlen(tmp),sizeof(char));
+      // strcpy(tmp2, tmp); 
+      string bla(tmp); 
+      // elem->label.reserve(1024); 
+      elem->label = bla; 
     }
   else 
     {

@@ -1,3 +1,4 @@
+#pragma once 
 #include "global.hpp"
 #include "TreeElem.hpp"
 
@@ -5,17 +6,21 @@ class Tree
 {
 public: 
   Tree(int numTax); 
-  ~Tree(); 
   TreeElem* getNextElem(){return &(allocatedElems[elemsUsed++]); } 
+  int getNumTax(){return numTax;}
   TreeElem* getStart(){return start;} 
   void setStart(TreeElem *_start){start = _start; }
+  vector<string> getTaxaNames();
 
 private: 
-  TreeElem *allocatedElems; 
   int elemsUsed;   
+  int numTax; 
+  vector<TreeElem> allocatedElems; 
   TreeElem* start; 
 }; 
 
 
 
 ostream& operator<<(ostream &out, Tree &tree);
+
+

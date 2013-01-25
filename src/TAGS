@@ -1,34 +1,134 @@
 
-Tree.cpp,125
-Tree::Tree(int numTax)Tree3,21
-Tree::~Tree()~Tree10,143
-ostream& operator<<(ostream &out, Tree &tree)operator <<16,188
+BipartitionList.cpp,274
+BipartitionList::~BipartitionList()~BipartitionList5,34
+void BipartitionList::fillList(Tree &tree, unordered_map<string,int> posMeaning)fillList12,123
+BitSet<uint64_t>* BipartitionList::extractBip(TreeElem *elem, unordered_map<string,int> &posMeaning)extractBip27,479
 
-Tree.hpp,351
-class TreeTree4,47
-  TreeElem* getNextElem(){return &(allocatedElems[elemsUsed++]); } getNextElem9,102
-  TreeElem* getStart(){return start;} getStart10,170
-  void setStart(TreeElem *_start){start = _start; }setStart11,209
-  TreeElem *allocatedElems; allocatedElems14,272
-  int elemsUsed;   elemsUsed15,301
-  TreeElem* start; start16,321
+BipartitionList.hpp,404
+class BipartitionListBipartitionList7,80
+  BipartitionList(int _numTax) : numTax(_numTax){} BipartitionList10,114
+  vector<BitSet<uint64_t>*> getList(){return bipartitions;}  getList13,256
+  vector<string> getMeaning(){return bipMeaning; }getMeaning14,318
+  vector<BitSet<uint64_t>*> bipartitions;bipartitions18,467
+  vector<string> bipMeaning; bipMeaning19,509
+  int numTax;  numTax20,539
+
+BitSet.cpp,1973
+#define COUNT_WIDTH COUNT_WIDTH4,24
+#define HAVE_64BITHAVE_64BIT6,56
+template<> uint64_t BitSet<uint64_t>::allOne = ULONG_MAX; allOne9,94
+template<> uint8_t BitSet<uint64_t>::divOp = 6; divOp10,153
+template<> uint64_t* BitSet<uint64_t>::mask = reinterpret_cast<uint64_t*>(new recMask<uint64_t, 64>()); mask11,202
+template<> uint64_t* BitSet<uint64_t>::countMask = reinterpret_cast<uint64_t*>(new lookup<uint64_t,COUNT_WIDTH>()); countMask12,307
+nat BitSet<uint64_t>::countOneElement(uint64_t element) const countOneElement15,436
+template<> uint32_t BitSet<uint32_t>::allOne = UINT_MAX; allOne30,867
+template<> uint8_t BitSet<uint32_t>::divOp = 5; divOp31,925
+template<> uint32_t* BitSet<uint32_t>::mask = reinterpret_cast<uint32_t*>(new recMask<uint32_t, 32>()); mask32,974
+template<> uint32_t* BitSet<uint32_t>::countMask = reinterpret_cast<uint32_t*>(new lookup<uint32_t,COUNT_WIDTH>());countMask33,1079
+nat BitSet<uint32_t>::countOneElement(uint32_t element) constcountOneElement35,1206
+template<> uint16_t BitSet<uint16_t>::allOne = USHRT_MAX; allOne46,1450
+template<> uint8_t BitSet<uint16_t>::divOp = 4; divOp47,1509
+template<> uint16_t* BitSet<uint16_t>::mask = reinterpret_cast<uint16_t*>(new recMask<uint16_t, 16>()); mask48,1558
+template<> uint16_t* BitSet<uint16_t>::countMask = reinterpret_cast<uint16_t*>(new lookup<uint16_t,COUNT_WIDTH>());countMask49,1663
+template<> nat BitSet<uint16_t>::countOneElement(uint16_t element) constcountOneElement50,1779
+template<> uint8_t BitSet<uint8_t>::allOne = UCHAR_MAX; allOne58,1947
+template<> uint8_t BitSet<uint8_t>::divOp = 3; divOp59,2004
+template<> uint8_t* BitSet<uint8_t>::mask = reinterpret_cast<uint8_t*>(new recMask<uint8_t, 8>()); mask60,2052
+template<> uint8_t* BitSet<uint8_t>::countMask = reinterpret_cast<uint8_t*>(new lookup<uint8_t,COUNT_WIDTH>());countMask61,2152
+template<>  nat BitSet<uint8_t>::countOneElement(uint8_t element) constcountOneElement62,2264
+
+BitSet.hpp,3608
+class BitSetBitSet14,202
+  T getPart (nat num) const { return bv[num]; }getPart44,744
+  friend ostream& operator<<(ostream &stream, const BitSet &rhs)    operator <<52,936
+  T *bv;bv62,1169
+  uint64_t length; length63,1178
+  uint64_t numElems; numElems64,1198
+  static const nat maskLength = sizeof(T) * CHAR_BIT; maskLength67,1231
+  static const nat maxElem = maskLength - 1;maxElem68,1286
+  static T allOne; allOne70,1332
+  static uint8_t divOp;divOp71,1352
+  static T* mask;mask73,1377
+  static T* countMask; countMask74,1395
+template<typename T> BitSet<T>::BitSet(nat _numElems)BitSet91,1734
+template<typename T> BitSet<T>::~BitSet() ~BitSet100,1991
+template<typename T> uint64_t BitSet<T>::convertToInternalSize(uint64_t size)convertToInternalSize105,2052
+template<typename T> void BitSet<T>::set()set111,2197
+template<typename T> void BitSet<T>::flip()flip123,2472
+template<typename T> void BitSet<T>::unset()unset137,2755
+template<typename T> BitSet<T>::BitSet(const BitSet & rhs) BitSet146,2892
+template<typename T> void BitSet<T>::reset()reset154,3092
+template<typename T> inline void BitSet<T>::copyFromToHelper(T *donor, T *result, nat start, nat end)copyFromToHelper163,3229
+template<typename T> inline void BitSet<T>::copyFromStart(T *donor, T *result, nat end)copyFromStart169,3445
+template<typename T> inline void BitSet<T>::copyToEnd(T *donor, T *result, nat start)copyToEnd176,3625
+template<typename T> void BitSet<T>::copyRange( BitSet &donor, nat begin, nat end )  copyRange183,3843
+template<typename T> nat BitSet<T>::count() const count212,4511
+template<typename T> void BitSet<T>::resize(uint64_t size)resize221,4680
+template<typename T> void BitSet<T>::resizeLazy(uint64_t size)resizeLazy240,5188
+template<typename T> BitSet<T>& BitSet<T>::operator=(const BitSet<T>& rhs )operator =259,5651
+template<typename T> void BitSet<T>::set(nat pos)set274,5941
+template<typename T> bool BitSet<T>::test(nat pos)  const test281,6073
+template<typename T> void BitSet<T>::flip(nat pos)  flip294,6377
+template<typename T> void BitSet<T>::unset(nat pos)  unset301,6514
+template<typename T> uint64_t BitSet<T>::internalSize() constinternalSize307,6650
+template<typename T> uint64_t BitSet<T>::size() const size312,6734
+template<typename T > void BitSet<T>::andify(const BitSet &rhs)andify318,6815
+template<typename T> void BitSet<T>::orifyPart(const BitSet &rhs, nat begin, nat end)orifyPart329,7067
+template<typename T> void BitSet<T>::orify(const BitSet &rhs)orify366,7773
+template <typename T, nat  I> struct recMask recMask375,7982
+  recMask<T,I - 1> rest;rest377,8030
+  T RES;RES378,8055
+  recMask() : RES(1ul << (I-1)) {} recMask379,8064
+template <typename T> struct recMask<T, 1> recMask382,8104
+  T RES;RES384,8150
+  recMask() : RES(1) {}  recMask385,8159
+template<nat N> struct BitCount{ enum { RES = ( N & 1 ? 1 : 0 )  + BitCount< (N>>1) >::RES   }; }; BitCount390,8207
+template<nat N> struct BitCount{ enum { RES = ( N & 1 ? 1 : 0 )  + BitCount< (N>>1) >::RES   }; }; RES390,8207
+template<> struct BitCount<0> { enum {  RES = 0};  }; BitCount391,8307
+template<> struct BitCount<0> { enum {  RES = 0};  }; RES391,8307
+template<typename T, nat I > struct lookuplookup395,8385
+  lookup<T,I-1> rest;rest397,8430
+  T RES; RES398,8452
+  lookup() : RES(BitCount<I>::RES) {} lookup399,8462
+template<typename T> struct lookup<T,0> lookup403,8507
+  T RES;    RES405,8552
+  lookup() : RES(0) {} lookup406,8565
+template<typename T> void BitSet<T>::printRaw(FILE *fh) constprintRaw411,8596
+
+Tree.cpp,248
+Tree::Tree(int _numTax)Tree3,21
+ostream& operator<<(ostream &out, Tree &tree)operator <<11,118
+void nameExtractionHelper(TreeElem* elem, vector<string> &names)nameExtractionHelper18,210
+vector<string> Tree::getTaxaNames()getTaxaNames30,463
+
+Tree.hpp,438
+class TreeTree5,61
+  TreeElem* getNextElem(){return &(allocatedElems[elemsUsed++]); } getNextElem9,104
+  int getNumTax(){return numTax;}getNumTax10,172
+  TreeElem* getStart(){return start;} getStart11,206
+  void setStart(TreeElem *_start){start = _start; }setStart12,245
+  int elemsUsed;   elemsUsed16,341
+  int numTax; numTax17,361
+  vector<TreeElem> allocatedElems; allocatedElems18,376
+  TreeElem* start; start19,412
 
 TreeElem.cpp,67
 ostream& operator<<(ostream& out, TreeElem &elem)operator <<6,50
 
-TreeElem.hpp,193
-class TreeElemTreeElem4,3
-  bool isTip(){return down[0] == nullptr && down[1] == nullptr; }isTip7,31
-  TreeElem *down[2]; down8,97
-  TreeElem *up;up9,119
-  char *label;   label10,135
+TreeElem.hpp,225
+class TreeElemTreeElem4,16
+  TreeElem()TreeElem7,44
+  bool isTip(){return down[0] == nullptr && down[1] == nullptr; }isTip13,133
+  TreeElem *down[2]; down15,200
+  TreeElem *up;up16,222
+  string label; label17,238
 
 TreeReader.cpp,315
 int getNumTreeHelper(const char *fileName)getNumTreeHelper11,168
 TreeReader::TreeReader( char *fileName)TreeReader25,345
 TreeReader::~TreeReader()~TreeReader39,576
 TreeElem* TreeReader::traverseLegacy(All *tr,node* p , Tree &tree )traverseLegacy50,694
-void TreeReader::readTree(Tree &tree)readTree85,1501
+void TreeReader::readTree(Tree &tree)readTree86,1560
 
 TreeReader.hpp,366
 class TreeReaderTreeReader8,86
@@ -44,43 +144,11 @@ global.cpp,102
 void errorExit(int e)errorExit5,25
 FILE *myfopen(const char *path, const char *mode)myfopen13,120
 
-global.hpp,0
+global.hpp,29
+typedef int nat; nat23,280
 
 main.cpp,43
-int main(int argc, char* argv[])main7,52
-
-old/OldTree.cpp,238
-Tree::Tree(int _numTax)Tree4,22
-Tree::~Tree()~Tree15,205
-ostream& operator<<(ostream &out, Tree &tree)operator <<22,248
-void Tree::traverseAndPrint()traverseAndPrint32,437
-void Tree::traverseInner(Node *node)traverseInner40,521
-
-old/Node.cpp,65
-ostream& operator<< (ostream &out, Node &node )operator <<4,22
-
-old/Node.hpp,244
-class Node Node5,38
-  Node* getBack(){return back;}getBack8,62
-  Node* getNext(){return next;}  getNext9,94
-  Node* next; next12,130
-  Node* back; back13,145
-  int id; id14,160
-  char *name; name15,171
-  bool isTip; isTip16,186
-
-old/OldTree.hpp,533
-class  TreeTree11,100
-  Node* getTipByNum(int num){assert(num < numTax); return nodes + num; }getTipByNum16,156
-  Node* getNode(int num){return nodes + num;} getNode17,229
-  Node* getNodes(){return nodes; }getNodes18,276
-  int getNumNodes(){return 2 * numTax -3 ; }  getNumNodes19,311
-  void setStart(Node *_start) {start = _start; }setStart20,358
-  Node* getStart() {return start; }getStart21,407
-  Node *nodes; nodes25,516
-  int numTax; numTax26,532
-  int numNodes; numNodes27,547
-  Node *start;  start28,564
+int main(int argc, char* argv[])main8,83
 
 raxmlLegacy.cpp,3068
 #define printBothOpen printBothOpen13,409
