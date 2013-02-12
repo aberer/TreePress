@@ -13,8 +13,8 @@ public:
   vector<string> getTaxaNames();
 
 private: 
-  int elemsUsed;   
-  int numTax; 
+  nat elemsUsed;   
+  nat numTax; 
   vector<TreeElem> allocatedElems; 
   TreeElem* start; 
 }; 

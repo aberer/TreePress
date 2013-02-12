@@ -1102,12 +1102,11 @@ char *writeTreeToString(All *tr, boolean printBranchLengths)
 
 void freeTree(All *tr)
 {
-  int i; 
-  for(i = 1; i <= tr->mxtips; ++i)
+  for(int i = 1; i <= tr->mxtips; ++i)
     free(tr->nameList[i]);
   free(tr->nameList);
 
-  for(i = 0; i < tr->nameHash->tableSize; ++i)
+  for(nat i = 0; i < tr->nameHash->tableSize; ++i)
     {
       stringEntry *elem = tr->nameHash->table[i];
       while(elem)

@@ -4,7 +4,6 @@
 
 
 
-
 int main(int argc, char* argv[])
 {
   if(argc != 2 )
@@ -40,6 +39,33 @@ int main(int argc, char* argv[])
 
   for(auto bip : bl.getList()) 
     cout <<  *bip << endl; 
+
+
+
+
+  // cout << "================" <<endl; 
+
+  // thisTree = *(trees[1]); 
+  // cout << thisTree << endl; 
+
+  // // extract a mapping of taxon names to bitset position (reuse that!)
+  // unordered_map<string,int> name2pos2 ; 
+  // vector<string> names2 = thisTree.getTaxaNames(); 
+  // ctr = 0; 
+  // for(auto name : names2 )
+  //   name2pos2[name] = ctr++; 
+  
+  // // now we can extract bipartitions (efficiently enough) from the tree  
+  // BipartitionList bl2(thisTree.getNumTax()); 
+  // bl2.fillList(thisTree, name2pos);
+
+  // for(auto bip : bl2.getList()) 
+  //   cout <<  *bip << endl; 
+
+
+  
+  
+  
 
   return EXIT_SUCCESS; 
 }

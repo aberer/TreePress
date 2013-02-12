@@ -32,7 +32,7 @@ vector<string> Tree::getTaxaNames()
   vector<string> result; 
   
   nameExtractionHelper(start, result); 
-  assert(result.size() == numTax);     
+  assert(result.size() == numTax); 
   
   return result; 
 }

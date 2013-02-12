@@ -1,17 +1,21 @@
-# Object files
 *.o
-
-# Libraries
-*.lib
-*.a
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
+autom4te.cache
+aclocal.m4
+*.log
+config.*
+.*
+Makefile
+Makefile.in
+depcomp
+exabayes
+install-sh
+lib/
+missing
+src/examl/*
+src/pll/*
+stamp-h1
+configure
+src/examl
+src/pll
+lastConfig
+ExaBayes_*

@@ -24,15 +24,15 @@ void BipartitionList::fillList(Tree &tree, unordered_map<string,int> posMeaning)
 }
 
 
-BitSet<uint64_t>* BipartitionList::extractBip(TreeElem *elem, unordered_map<string,int> &posMeaning)
+BitSet<bits>* BipartitionList::extractBip(TreeElem *elem, unordered_map<string,int> &posMeaning)
 {
-  BitSet<uint64_t>* result = nullptr ; 
+  BitSet<bits>* result = nullptr ; 
 
   if(not elem->isTip() )
     {
-      result =  new BitSet<uint64_t>(numTax);
+      result =  new BitSet<bits>(numTax);
 
-      BitSet<uint64_t> *left = extractBip(elem->down[0],posMeaning),
+      BitSet<bits> *left = extractBip(elem->down[0],posMeaning),
 	*right = extractBip(elem->down[1],posMeaning); 
       
       if(left != nullptr)

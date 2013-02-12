@@ -10,12 +10,12 @@ public:
   BipartitionList(int _numTax) : numTax(_numTax){} 
   ~BipartitionList();
   void fillList(Tree& tree, unordered_map<string,int> posMeaning); 
-  vector<BitSet<uint64_t>*> getList(){return bipartitions;}  
+  vector<BitSet<bits>*> getList(){return bipartitions;}  
   vector<string> getMeaning(){return bipMeaning; }
 
 private:
-  BitSet<uint64_t>* extractBip(TreeElem *elem, unordered_map<string,int> &posMeaning); 
-  vector<BitSet<uint64_t>*> bipartitions;
+  BitSet<bits>* extractBip(TreeElem *elem, unordered_map<string,int> &posMeaning); 
+  vector<BitSet<bits>*> bipartitions;
   vector<string> bipMeaning; 
   int numTax;  
 };
