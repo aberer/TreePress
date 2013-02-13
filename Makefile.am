@@ -14,7 +14,7 @@ else
 AM_CXXFLAGS+=-O2 -fomit-frame-pointer -funroll-loops
 endif
 
-treepress_SOURCES=src/BipartitionList.cpp  src/BipartitionProfile.cpp  src/BitSet.cpp  src/global.cpp  src/main.cpp  src/raxmlLegacy.cpp  src/Tree.cpp  src/TreeElem.cpp  src/TreeReader.cpp
+treepress_SOURCES=src/BipartitionList.cpp  src/BipartitionProfile.cpp  src/BitSet.cpp  src/global.cpp  src/main.cpp  src/raxmlLegacy.cpp  src/Tree.cpp  src/TreeElem.cpp  src/TreeReader.cpp src/Bipartition.cpp
 
 bin_PROGRAMS=treepress 
 

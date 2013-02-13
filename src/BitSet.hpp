@@ -1,3 +1,5 @@
+#pragma once
+
 #include "global.hpp"
 
 // #include "common.hpp"
@@ -15,7 +17,10 @@ class BitSet
 {
 public:   
   static uint64_t convertToInternalSize(uint64_t size); 
-  
+  BitSet(const BitSet &rhs);   
+  BitSet(){}; 
+
+
   explicit BitSet(nat numElems);
   ~BitSet();
 
@@ -77,7 +82,6 @@ private:
   void copyFromStart(T *donor, T *result, nat end); 
   void copyFromToHelper(T *donor, T *result, nat start, nat end); 
   nat countOneElement(T element) const; 
-  BitSet(const BitSet &rhs); 
 };
 
 

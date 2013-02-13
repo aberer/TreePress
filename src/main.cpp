@@ -1,5 +1,5 @@
 #include "global.hpp"
-#include "BipartitionList.hpp"
+#include "BipartitionProfile.hpp"
 #include "TreeReader.hpp"
 
 
@@ -20,52 +20,11 @@ int main(int argc, char* argv[])
       tr.readTree(*tmp); 
       trees.push_back(tmp); 
     }  
-  
-  // printing the tree works in principle, but we do not get the
-  // raxml-style unrooted format again 
-  Tree &thisTree = *(trees[0]); 
-  cout << thisTree << endl; 
-
-  // extract a mapping of taxon names to bitset position (reuse that!)
-  unordered_map<string,int> name2pos ; 
-  vector<string> names = thisTree.getTaxaNames(); 
-  int ctr = 0; 
-  for(auto name : names )
-    name2pos[name] = ctr++; 
-  
-  // now we can extract bipartitions (efficiently enough) from the tree  
-  BipartitionList bl(thisTree.getNumTax()); 
-  bl.fillList(thisTree, name2pos);
-
-  for(auto bip : bl.getList()) 
-    cout <<  *bip << endl; 
 
 
-
-
-  // cout << "================" <<endl; 
-
-  // thisTree = *(trees[1]); 
-  // cout << thisTree << endl; 
-
-  // // extract a mapping of taxon names to bitset position (reuse that!)
-  // unordered_map<string,int> name2pos2 ; 
-  // vector<string> names2 = thisTree.getTaxaNames(); 
-  // ctr = 0; 
-  // for(auto name : names2 )
-  //   name2pos2[name] = ctr++; 
-  
-  // // now we can extract bipartitions (efficiently enough) from the tree  
-  // BipartitionList bl2(thisTree.getNumTax()); 
-  // bl2.fillList(thisTree, name2pos);
-
-  // for(auto bip : bl2.getList()) 
-  //   cout <<  *bip << endl; 
-
+  BipartitionProfile bipProfile(trees); 
+  cout << bipProfile << endl; 
 
   
-  
-  
-
   return EXIT_SUCCESS; 
 }

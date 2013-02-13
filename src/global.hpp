@@ -26,3 +26,5 @@ typedef uint32_t bits;
 
 
 typedef unsigned int nat; 
+
+#define NOT ! 

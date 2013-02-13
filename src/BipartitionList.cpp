@@ -1,4 +1,5 @@
 
+#include "global.hpp"
 #include "BipartitionList.hpp"
 
 
@@ -48,7 +49,11 @@ BitSet<bits>* BipartitionList::extractBip(TreeElem *elem, unordered_map<string,i
       else 
 	result->set(posMeaning[elem->down[1]->label]); 
 
-      bipartitions.push_back(result); 
+      nat numSet  = result->count(); 
+
+      // TODO this is an ugly hack 
+      if(NOT (numSet == 1 || numSet == posMeaning.size()-1))
+	bipartitions.push_back(result); 
     }
   
   return result; 
