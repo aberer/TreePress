@@ -57,7 +57,7 @@ BipartitionProfile::BipartitionProfile(vector<Tree*> trees)
 ostream&  operator<<(ostream &out, const BipartitionProfile& rhs)
 {
   for(auto aPair : rhs.profile) 
-    out << aPair.first << " ====> " << *aPair.second << "\tfreq: " << aPair.second->count() << endl; 
+    out << aPair.first << " ====> " << *aPair.second << "\tfreq: " << aPair.second->count() << "\ttaxaInSmallPartition: " << aPair.first.count() << endl; 
   return out; 
 }
 
