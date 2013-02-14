@@ -54,6 +54,9 @@ BipartitionProfile::BipartitionProfile(vector<Tree*> trees)
 
 
 
+
+
+
 ostream&  operator<<(ostream &out, const BipartitionProfile& rhs)
 {
   for(auto aPair : rhs.profile) 

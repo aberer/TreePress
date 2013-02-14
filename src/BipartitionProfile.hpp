@@ -15,7 +15,7 @@ public:
   {
     return bip.getHash(numbers);
   }
-  
+
   static int* numbers;
 }; 
 
@@ -24,8 +24,15 @@ class BipartitionProfile
 {
 public:
   BipartitionProfile(vector<Tree*> trees);
+
   ~BipartitionProfile(){}; 
-  
+
+  BipartitionProfile(const BipartitionProfile &bp)
+    : profile(bp.profile)
+  { 
+  }
+
+
   friend ostream&  operator<<(ostream &out, const BipartitionProfile& rhs) ;
 
 private:  

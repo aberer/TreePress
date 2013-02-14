@@ -18,3 +18,4 @@ treepress_SOURCES=src/BipartitionList.cpp  src/BipartitionProfile.cpp  src/BitSe
 
 bin_PROGRAMS=treepress 
 
+include flymake.mk
